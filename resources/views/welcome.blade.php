@@ -1,95 +1,66 @@
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FamilyCross</title>
 
-        <title>Laravel</title>
+    {{--Icons--}}
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+    {{--Styles--}}
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+<div class="main-area">
+    <main class="main-block">
+        <div class="main-block__logo">logo</div>
+        <nav class="main-block-nav">
+            <ul class="menu">
+                <li class="menu__item">
+                    <button class="main-block-nav__item button">
+                        Об авторе
+                    </button>
+                </li>
+                <li class="menu__item">
+                    <button class="main-block-nav__item button">
+                        Записки
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="main-block-about">
+            <div class="main-block-about__heading">О сайте</div>
+            <div class="main-block-about__content">
+                <p class="text text_paragraph">
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                </p>
+                <p class="text text_paragraph">
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                    Здесь будет располагаться текст о наполнении этого сайта.
+                </p>
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
-    </body>
+    </main>
+</div>
+
+</body>
 </html>
