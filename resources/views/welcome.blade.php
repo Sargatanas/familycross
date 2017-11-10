@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<div class="main-area">
+<div class="main-area area">
     <main class="main-block">
         <div class="main-block__logo">logo</div>
         <nav class="main-block-nav">

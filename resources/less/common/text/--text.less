@@ -1,9 +1,16 @@
 .text {
+  line-height: 1.3;
+  text-align: justify;
+
   &_paragraph {
     margin-top: 15px;
 
-    &:first-child {
+    &:first-of-type {
       margin-top: 0
     }
+  }
+
+  &_math-text {
+    font-style: italic;
   }
 }
