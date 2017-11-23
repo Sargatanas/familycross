@@ -15,6 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/note', function() {
-    return view('notes.note');
-});
+Route::get('note/id{id}', 'NoteController@show')
+    ->name('note.show')
+;
