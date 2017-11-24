@@ -14,14 +14,7 @@
 </head>
 <body>
 
-<div class="notes-area area">
-    <main class="notes-block">
-        <div class="notes-block__heading">@yield('heading')</div>
-        <div class="notes-block-content">
-            @yield('content')
-        </div>
-    </main>
-</div>
+@yield('content')
 
 </body>
 </html>
