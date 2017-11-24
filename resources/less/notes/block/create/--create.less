@@ -1,0 +1,29 @@
+.notes-block-create {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  border: 3px solid #ababab;
+  border-bottom-right-radius: 10px;
+  font-size: 0.9em;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding: 0 20px;
+    background: #ababab;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  &__textarea {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 150px;
+  }
+}
+
+@import "notes.block.add.less";
+@import "notes.block.create.content.less";
+@import "order/--order.less";

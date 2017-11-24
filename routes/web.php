@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
+
+Route::get('note/create', function() {
+    return view('notes.create.app');
+});
