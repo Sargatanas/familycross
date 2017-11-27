@@ -2,25 +2,35 @@
     <div class="notes-block-create__heading">
         Задание
         <div class="notes-block-create-order">
-            <label for="task-order-{{ $task }}" class="notes-block-create-order__label">
+            <label for="order-{{ $element->id }}" class="notes-block-create-order__label">
                 Порядок блока:
             </label>
-            <input class="notes-block-create-order__input" type="number" id="task-order-{{ $task }}">
+            <input class="notes-block-create-order__input"
+                   type="number"
+                   id="order-{{ $element->id }}"
+                   name="order-{{ $element->id }}"
+                   value="{{ $element->order }}">
         </div>
     </div>
     <div class="notes-block-create-content">
         <div class="notes-block-create-content__area">
-            <label for="task-heading-{{ $task }}" class="notes-block-create-content__label">
+            <label for="heading-{{ $element->id }}" class="notes-block-create-content__label">
                 Заголовок
             </label>
-            <input type="text" class="notes-block-create-content__field" id="task-heading-{{ $task }}">
+            <input type="text"
+                   class="notes-block-create-content__field"
+                   id="heading-{{ $element->id }}"
+                   name="heading-{{ $element->id }}"
+                   value="{{ $element->heading }}">
         </div>
         <div class="notes-block-create-content__area">
-            <label for="task-content-{{ $task }}" class="notes-block-create-content__label">
+            <label for="content-{{ $element->id }}" class="notes-block-create-content__label">
                 Содержимое
             </label>
             <div class="notes-block-create-content__field">
-                <textarea class="notes-block-create__textarea" id="task-content-{{ $task }}"></textarea>
+                <textarea class="notes-block-create__textarea"
+                          id="content-{{ $element->id }}"
+                          name="content-{{ $element->id }}">{{ $element->content }}</textarea>
             </div>
         </div>
     </div>

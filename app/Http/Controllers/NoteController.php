@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Note;
-use App\NoteElement;
 use Illuminate\Http\Response;
 
 class NoteController extends Controller
@@ -18,5 +17,14 @@ class NoteController extends Controller
         return view('notes.note', [
             'note' =>  Note::find($id)
         ]);
+    }
+
+    /**
+     * Создать новую записку
+     *
+     * @return Response
+    */
+    public function create() {
+        return view('notes.note.create');
     }
 }

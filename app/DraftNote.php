@@ -18,22 +18,13 @@ use Illuminate\Database\Eloquent\Model;
  * @method static Builder|\App\Note whereTitle($value)
  * @method static \Illuminate\Database\Query\Builder|\App\Note onlyTrashed()
  * @method static bool|null restore()
-*/
-class Note extends Model
+ */
+class DraftNote extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'notes_list';
-
-    /**
-     * Найти все элементы, принадлежащие конкретной записке
-     *
-    */
-    public function getElementsAttribute()
-    {
-        return $this->hasMany('App\NoteElement', 'note_id')->orderBy('order')->get();
-    }
+    protected $table = 'draft_notes';
 }

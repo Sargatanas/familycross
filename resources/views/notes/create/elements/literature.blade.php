@@ -1,20 +1,26 @@
 <div class="notes-block__element notes-block-create">
     <div class="notes-block-create__heading">
-        Cписок литературы
+        Список литературы
         <div class="notes-block-create-order">
-            <label for="literature-order-{{ $literature }}" class="notes-block-create-order__label">
+            <label for="order-{{ $element->id }}" class="notes-block-create-order__label">
                 Порядок блока:
             </label>
-            <input class="notes-block-create-order__input" type="number" id="literature-order-{{ $literature }}">
+            <input class="notes-block-create-order__input"
+                   type="number"
+                   id="order-{{ $element->id }}"
+                   name="order-{{ $element->id }}"
+                   value="{{ $element->order }}">
         </div>
     </div>
     <div class="notes-block-create-content">
         <div class="notes-block-create-content__area">
-            <label for="literature-content-{{ $literature }}" class="notes-block-create-content__label">
+            <label for="content-{{ $element->id }}" class="notes-block-create-content__label">
                 Содержимое
             </label>
             <div class="notes-block-create-content__field">
-                <textarea class="notes-block-create__textarea" id="literature-content-{{ $literature }}"></textarea>
+                <textarea class="notes-block-create__textarea"
+                          id="content-{{ $element->id }}"
+                          name="content-{{ $element->id }}">{{ $element->content }}</textarea>
             </div>
         </div>
     </div>

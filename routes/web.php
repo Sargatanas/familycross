@@ -15,10 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/* Просмотр записки*/
 Route::get('note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
 
-Route::get('note/create', function() {
-    return view('notes.create.app');
-});
+/* Создание записки*/
+Route::get('note/create', 'DraftNoteController@createShow')
+    ->name('note.create.show')
+;
+Route::post('note/create/add', 'DraftNoteController@create')
+    ->name('note.create')
+;
