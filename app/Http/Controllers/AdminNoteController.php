@@ -18,7 +18,7 @@ class AdminNoteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(IsNoteExist::class)->only(['delete']);
+        $this->middleware(IsNoteExist::class)->only(['delete', 'editShow']);
     }
 
     /**
@@ -59,6 +59,19 @@ class AdminNoteController extends Controller
         return redirect(route('admin.notes.show'))
             ->with(['status' => 'Записка была успешно удалена'])
         ;
+    }
+
+    /**
+     * Показать интерфейс редактирования записки
+     *
+     * @param int $id Идентификатор записки
+     * @return Response
+     */
+    public function editShow($id)
+    {
+        return view('admin.note.edit', [
+            'note' => Note::find($id)
+        ]);
     }
 
 }

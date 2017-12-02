@@ -38,11 +38,19 @@ class Note extends Model
     ];
 
     /**
+     * Получить все блоки текущей записки
+     */
+    public function blocks()
+    {
+        return $this->hasMany('App\Block', 'note_id');
+    }
+
+    /**
      * Найти все элементы, принадлежащие конкретной записке
      *
     */
     public function getElementsAttribute()
     {
-        return $this->hasMany('App\NoteElement', 'note_id')->orderBy('order')->get();
+        return $this->hasMany('App\Block', 'note_id')->orderBy('order')->get();
     }
 }

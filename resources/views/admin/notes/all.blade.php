@@ -12,6 +12,7 @@
         <main class="notes-block">
             @foreach ($notes as $note)
                 <div class="notes-block__heading">{{ $note->title }}</div>
+                <a href="{{ route('admin.note.show', ['id' => $note->id]) }}">Редактировать записку</a>
                 <a href="{{ route('admin.note.delete', ['id' => $note->id]) }}">Удалить записку</a>
                 <hr />
             @endforeach
