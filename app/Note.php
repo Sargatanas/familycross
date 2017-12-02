@@ -47,6 +47,14 @@ class Note extends Model
     }
 
     /**
+     * Получить текущую опубликоанную записку
+     */
+    public function publicNote()
+    {
+        return $this->hasOne('App\PublicNote', 'note_id');
+    }
+
+    /**
      * Найти все элементы, принадлежащие конкретной записке
      *
     */

@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 /* Просмотр записки*/
-//Route::get('note/id{id}', 'NoteController@show')
-//    ->name('note.show')
-//;
+Route::get('note/id{id}', 'NoteController@show')
+    ->name('note.show')
+;
 
 /* Создание записки*/
 //Route::get('note/create', 'DraftNoteController@createShow')
@@ -78,4 +78,13 @@ Route::post('/admin/note/id{note_id}/block/type/task/id{id}', 'AdminBlockControl
 ;
 Route::post('/admin/note/id{note_id}/block/type/text/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.text.edit')
+;
+
+// опубликовать записку
+Route::get('/admin/note/id{note_id}/public', 'AdminNoteController@createPublic')
+    ->name('admin.note.public')
+;
+// удалить публикацию
+Route::get('/admin/note/id{note_id}/public/delete', 'AdminNoteController@deletePublic')
+    ->name('admin.note.public.delete')
 ;

@@ -94,6 +94,10 @@
                 </div>
 
                 <input class="notes-block-add__button" type="submit" value="Добавить">
+                <a href="{{ route('admin.note.public', ['id' => $note->id]) }}">Опубликовать</a>
+                @if( filled($note->publicNote) )
+                    <a href="{{ route('admin.note.public.delete', ['id' => $note->id]) }}">Удалить публикацию</a>
+                @endif
             </form>
         </main>
     </div>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Middleware\IsNoteExist;
+use App\Http\Middleware\IsPublicNoteExist;
 use App\Http\Requests\NoteCreateRequest;
 use App\Note;
+use App\PublicNote;
 use Illuminate\Http\Request;
 use Response;
 
@@ -18,7 +20,9 @@ class AdminNoteController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(IsNoteExist::class)->only(['delete', 'editShow']);
+        $this->middleware(IsNoteExist::class)->except(['showAll', 'create']);
+
+        $this->middleware(IsPublicNoteExist::class)->only(['deletePublic']);
     }
 
     /**
@@ -72,6 +76,43 @@ class AdminNoteController extends Controller
         return view('admin.note.edit', [
             'note' => Note::find($id)
         ]);
+    }
+
+    /**
+     * Опубликовать записку
+     *
+     * @param int $id Идентификатор записки
+     * @return \Redirect
+     * @throws
+     */
+    public function createPublic($id)
+    {
+        $note = Note::find($id);
+        $public_note = PublicNote::firstOrCreate([
+            'note_id' => $id
+        ]);
+
+        //компилируем записку
+        $public_note->content = view('notes.compile', ['note' => $note])->render();
+        $public_note->title = $note->title;
+        $public_note->save();
+
+        return redirect(route('admin.note.show', ['id' => $id]));
+    }
+
+    /**
+     * Удалить опубликованную записаку
+     *
+     * @param int $id Идентификатор записки
+     * @return \Redirect
+     * @throws
+     */
+    public function deletePublic($id)
+    {
+        $public_note = PublicNote::where(['note_id' => $id])->first();
+        $public_note->delete();
+
+        return redirect(route('admin.note.show', ['id' => $id]));
     }
 
 }
