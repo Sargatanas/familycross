@@ -27,3 +27,22 @@ Route::get('note/create', 'DraftNoteController@createShow')
 Route::post('note/create/add', 'DraftNoteController@create')
     ->name('note.create')
 ;
+
+/**
+ * Работа непосредственно с записками
+ *
+ */
+// список записок
+Route::get('/admin/notes', 'AdminNoteController@showAll')
+    ->name('admin.notes.show')
+;
+
+// создание новой записки
+Route::post('/admin/note/create', 'AdminNoteController@create')
+    ->name('admin.note.create')
+;
+
+// удаление записки
+Route::get('/admin/note/id{id}/delete', 'AdminNoteController@delete')
+    ->name('admin.note.delete')
+;

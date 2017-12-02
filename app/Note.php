@@ -29,6 +29,15 @@ class Note extends Model
     protected $table = 'notes_list';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title',
+    ];
+
+    /**
      * Найти все элементы, принадлежащие конкретной записке
      *
     */
