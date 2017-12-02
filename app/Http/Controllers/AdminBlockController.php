@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\Http\Middleware\IsBlockExist;
 use App\Http\Middleware\IsNoteExist;
+use App\Http\Requests\BlockCodeEditRequest;
 use App\Http\Requests\BlockCreateRequest;
 use App\Note;
+use DB;
 use Illuminate\Http\Request;
+use Validator;
 
 class AdminBlockController extends Controller
 {
@@ -18,6 +22,8 @@ class AdminBlockController extends Controller
     public function __construct()
     {
         $this->middleware(IsNoteExist::class);
+
+        $this->middleware(IsBlockExist::class)->except(['create']);
     }
 
     /**
@@ -42,5 +48,78 @@ class AdminBlockController extends Controller
         $note->blocks()->save($block);
 
         return redirect(route('admin.note.show', ['id' => $id]));
+    }
+
+    /**
+     * Удалить блок кода
+     *
+     * @param int $note_id Идентификатор записки
+     * @param int $id Идентификатор блока
+     * @return \Redirect
+     * @throws
+     */
+    public function delete($note_id, $id)
+    {
+        $note = Note::find($note_id);
+        $block = Block::find($id);
+
+        $blocks = $note->blocks()->where('order', '>', $block->order)->get();
+        foreach ($blocks as $_block) {
+            $_block->order--;
+            $_block->save();
+        }
+
+        $block->delete();
+
+        return redirect(route('admin.note.show', ['id' => $note->id]));
+    }
+
+    /**
+     * Редактировать блок кода
+     *
+     * @param BlockCodeEditRequest $request
+     * @param int $note_id Идентификатор записки
+     * @param int $id Идентификатор блока
+     * @return \Redirect
+     */
+    public function codeEdit(BlockCodeEditRequest $request, $note_id, $id)
+    {
+        $note = Note::find($note_id);
+        $block = Block::find($id);
+
+        if ($request->order != $block->order) {
+            //костылья валидация, додумать
+            $max = $note->blocks()->max('order');
+            $validator = Validator::make($request->all(), [
+                'order' => "required|integer|between:1,{$max}",
+            ]);
+            if ($validator->fails()) {
+                return redirect(route('admin.note.show', ['id' => $note->id]))
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            //сдвигаем порядок
+            if ($request->order > $block->order) {
+                $blocks = Block::where([['order', '>', $block->order], ['note_id', '=', $note->id]])->get();
+                foreach ($blocks as $_block) {
+                    $_block->order--;
+                    $_block->save();
+                }
+            } else {
+                $blocks = Block::where([['order', '<', $block->order], ['note_id', '=', $note->id]])->get();
+                foreach ($blocks as $_block) {
+                    $_block->order++;
+                    $_block->save();
+                }
+            }
+        }
+
+        $block->order = $request->order;
+        $block->heading = $request->heading;
+        $block->content = $request->content;
+        $block->save();
+
+        return redirect(route('admin.note.show', ['id' => $note->id]));
     }
 }

@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Block[] $blocks
  *
  * @method static Builder|\App\Note whereId($value)
  * @method static Builder|\App\Note whereTitle($value)
@@ -42,7 +43,7 @@ class Note extends Model
      */
     public function blocks()
     {
-        return $this->hasMany('App\Block', 'note_id');
+        return $this->hasMany('App\Block', 'note_id')->orderBy('order');
     }
 
     /**

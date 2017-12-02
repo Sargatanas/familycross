@@ -52,8 +52,8 @@ class Block extends Model
      * @var array
      */
     protected $fillable = [
-        'type', 'heading', 'content',
-        'order',
+        'order', 'heading', 'content',
+        'type'
     ];
 
     /**
