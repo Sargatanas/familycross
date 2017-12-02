@@ -101,21 +101,22 @@ class AdminBlockController extends Controller
 
             //сдвигаем порядок
             if ($request->order > $block->order) {
-                $blocks = Block::where([['order', '>', $block->order], ['note_id', '=', $note->id]])->get();
+                $blocks = $note->blocks()->where([['order', '>', $block->order], ['order', '<', $request->order + 1]])->get();
                 foreach ($blocks as $_block) {
                     $_block->order--;
                     $_block->save();
                 }
             } else {
-                $blocks = Block::where([['order', '<', $block->order], ['note_id', '=', $note->id]])->get();
+                $blocks = $note->blocks()->where([['order', '<', $block->order], ['order', '>', $request->order - 1]])->get();
                 foreach ($blocks as $_block) {
                     $_block->order++;
                     $_block->save();
                 }
             }
+
+            $block->order = $request->order;
         }
 
-        $block->order = $request->order;
         $block->heading = $request->heading;
         $block->content = $request->content;
         $block->save();
