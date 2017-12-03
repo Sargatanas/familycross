@@ -2,19 +2,19 @@
 
 namespace App\Http\Requests;
 
+use App\Block;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 /**
- * Валидируем запрос на создание записки
+ * Валидируем запрос на создание блока
  *
- * App\Http\Requests\NoteElementCreateRequest
+ * Class BlockCreateRequest
+ * @package App\Http\Requests
  *
- * @property integer $order
- * @property string|null $heading
- * @property string $content
+ * @property string $type Тип создаваемого блока
  */
-class NoteElementCreateRequest extends FormRequest
+class BlockCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -36,11 +36,9 @@ class NoteElementCreateRequest extends FormRequest
         return [
             'type' => [
                 'required',
-                Rule::in('text', 'important', 'code', 'task', 'literature')
-            ],
-            'order' => 'required|max:255',
-            'heading' => 'nullable|max:255',
-            'content' => 'max:5000',
+                Rule::in([Block::TYPE_TEXT, Block::TYPE_CODE, Block::TYPE_IMPORTANT,
+                          Block::TYPE_LITERATURE, Block::TYPE_TASK])
+            ]
         ];
     }
 }

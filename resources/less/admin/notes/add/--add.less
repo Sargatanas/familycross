@@ -1,0 +1,41 @@
+.admin-notes-add {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  margin-top: 10px;
+  border: 3px solid white;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-left: 10px;
+    background: white;
+    font-size: 1.2em;
+    color: grey;
+  }
+
+  &__error {
+    position: relative;
+    display: block;
+    margin-left: 100px;
+    color: red;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .admin-notes-add {
+    height: 180px;
+
+    &__error {
+      top: -30px;
+      width: 150px;
+      margin-left: 20px;
+      font-size: 0.9em;
+    }
+  }
+}
+
+@import "filed.less";
