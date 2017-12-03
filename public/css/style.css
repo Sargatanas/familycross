@@ -94,11 +94,42 @@ p {
   background: #b96d6a url("/img/icon-delete.png") 50% 50% no-repeat;
   background-size: 60% 60%;
 }
+.admin-area-notes-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 20px 0;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 2px solid #cbcbcb;
+}
+.admin-area-notes-title__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: #cbcbcb;
+  font-size: 1.2em;
+}
+.admin-area-notes-title__content {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 130px);
+  height: 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  font-size: 1.2em;
+}
 .admin-notes-add {
   display: flex;
   flex-direction: column;
   height: 120px;
-  margin-top: 10px;
+  margin: 10px;
   border: 3px solid white;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -129,19 +160,59 @@ p {
     font-size: 0.9em;
   }
 }
-.admin-notes-add-field {
+.admin-notes-add-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 20px 10px;
+  font-size: 1.2em;
+}
+.admin-notes-add-block__heading {
+  display: flex;
+  justify-content: flex-end;
+  width: 170px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+.admin-notes-add-block__select {
+  display: block;
+  width: 250px;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+.admin-notes-add-block__button {
+  margin-top: 5px;
+}
+@media screen and (max-width: 645px) {
+  .admin-notes-add-block__heading {
+    width: 150px;
+    font-size: 0.9em;
+  }
+  .admin-notes-add-block__select {
+    width: calc(100% - 160px);
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-width: 440px) {
+  .admin-notes-add-block__select {
+    width: 100%;
+  }
+}
+.admin-notes-add-note {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin: 20px 20px 5px;
+  margin: 15px 15px 5px;
 }
-.admin-notes-add-field__heading {
+.admin-notes-add-note__heading {
   display: block;
   margin-top: 5px;
   margin-right: 10px;
 }
-.admin-notes-add-field__input {
+.admin-notes-add-note__input {
   display: block;
   width: 60%;
   min-width: 100px;
@@ -151,42 +222,157 @@ p {
   box-sizing: border-box;
   border: 1px solid #bababa;
 }
-.admin-notes-add-field__input:focus {
+.admin-notes-add-note__input:focus {
   border-color: #50bf38;
   outline: none;
 }
-.admin-notes-add-field__input_error {
+.admin-notes-add-note__input_error {
   border-color: red;
 }
-.admin-notes-add-field__input_error:focus {
+.admin-notes-add-note__input_error:focus {
   border-color: red;
 }
-.admin-notes-add-field__submit {
-  display: block;
-  width: 100px;
-  height: 30px;
+.admin-notes-add-note__submit {
   margin-top: 5px;
   margin-left: auto;
+}
+@media screen and (max-width: 540px) {
+  .admin-notes-add-note__input {
+    width: 100%;
+  }
+  .admin-notes-add-note__submit {
+    width: 80px;
+  }
+}
+.admin-notes-add-buttons {
+  display: flex;
+}
+.admin-notes-add-buttons__element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: 10px;
   box-sizing: border-box;
   border: 2px solid #8c8c8c;
   border-bottom-right-radius: 5px;
   background: #9a9a9a;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
   color: white;
   text-transform: uppercase;
+  text-decoration: none;
+}
+.admin-notes-add-buttons__element_size-md {
+  width: 150px;
+}
+.admin-notes-add-buttons__element_size-lg {
+  width: 200px;
+}
+.admin-notes-add-buttons__element_color-green {
+  border: 2px solid #4b7b3d;
+  background: #588c45;
+}
+.admin-notes-add-buttons__element_color-red {
+  border: 2px solid #963d31;
+  background: #b84639;
+}
+.admin-notes-add-buttons__element_margin-0 {
+  margin-right: 0;
+}
+.admin-notes-add-buttons__element:not(:first-of-type) {
+  margin-left: 10px;
+}
+.admin-notes-edit {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 3px solid #cbcbcb;
+}
+.admin-notes-edit__content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px;
 }
 @media screen and (max-width: 540px) {
-  .admin-notes-add-field__input {
-    width: 100%;
+  .admin-notes-edit-block {
+    height: 150px;
   }
-  .admin-notes-add-field__submit {
-    width: 80px;
-  }
+}
+.admin-notes-edit-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  background: #cbcbcb;
+  font-size: 1.2em;
+}
+.admin-notes-edit-title-order {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+.admin-notes-edit-title-order__heading {
+  display: block;
+  width: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.admin-notes-edit-title-order__input {
+  display: block;
+  width: 55px;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+.admin-notes-edit-title__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  padding-right: 50px;
+}
+.admin-notes-edit-title__delete {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 5px;
+  background: #8c8c8c url("/img/icon-delete.png") 50% 50% no-repeat;
+  background-size: 60% 60%;
+}
+.admin-notes-edit-element {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+.admin-notes-edit-element__heading {
+  display: flex;
+  justify-content: flex-end;
+  width: 100px;
+  margin-right: 10px;
+}
+.admin-notes-edit-element__input {
+  display: block;
+  max-width: calc(100% - 110px);
+  min-width: calc(100% - 110px);
+  height: 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+}
+.admin-notes-edit-element__input_textarea {
+  min-height: 100px;
+  font-size: 1.1em;
 }
 .admin-area-notes {
   display: flex;
   flex-direction: column;
   width: 850px;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   margin: 50px auto 30px;
   background: #e9e9e9;
 }
