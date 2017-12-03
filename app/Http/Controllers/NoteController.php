@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Note;
+use App\PublicNote;
 use Illuminate\Http\Response;
 
 class NoteController extends Controller
@@ -14,8 +15,10 @@ class NoteController extends Controller
      * @return Response
     */
     public function show($id) {
-        return view('notes.note', [
-            'note' =>  Note::find($id)
+        $public_note = PublicNote::where(['note_id' => $id])->firstOrFail();
+
+        return view('notes.public', [
+            'public_note' =>  $public_note
         ]);
     }
 
