@@ -7,17 +7,36 @@
 @section('title', 'Записки на площадке')
 
 @section('content')
-    <h1>Список записок (гы-гы-гы) на площадке</h1>
-    <div class="notes-area area">
-        <main class="notes-block">
-            @foreach ($notes as $note)
-                <div class="notes-block__heading">{{ $note->title }}</div>
-                <a href="{{ route('admin.note.show', ['id' => $note->id]) }}">Редактировать записку</a>
-                <a href="{{ route('admin.note.delete', ['id' => $note->id]) }}">Удалить записку</a>
-                <hr />
-            @endforeach
+    <div class="area admin-area">
+        <div class="admin-area-notes">
+            <div class="admin-area-notes__heading">
+                Администрирование записок
+            </div>
+            <main class="admin-area-notes__content">
+                @if(filled($notes))
+                    @foreach ($notes as $note)
+                        <div class="admin-notes-block">
+                            <div class="admin-notes-heading">
+                                <div class="admin-notes-heading__title">
+                                    {{ $note->title }}
+                                </div>
+                                <a class="admin-notes-heading__edit"
+                                   type="button"
+                                   href="{{ route('admin.note.show', ['id' => $note->id]) }}">
+                                </a>
+                                <a class="admin-notes-heading__delete"
+                                   type="button"
+                                   href="{{ route('admin.note.delete', ['id' => $note->id]) }}">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="admin-notes-block">- Здесь пока нет ни одной записи-</div>
+                @endif
 
-            @include('admin.note.create')
-        </main>
+                @include('admin.note.create')
+            </main>
+        </div>
     </div>
 @endsection

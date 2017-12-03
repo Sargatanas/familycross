@@ -46,7 +46,9 @@ class AdminNoteController extends Controller
     {
         Note::create($request->all());
 
-        return redirect(route('admin.notes.show'));
+        $note = Note::orderBy('id', 'desc')->first();
+
+        return redirect(route('admin.note.show', ['id' => $note->id]));
     }
 
     /**

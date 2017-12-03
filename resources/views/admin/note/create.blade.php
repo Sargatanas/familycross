@@ -1,21 +1,28 @@
-<form class="notes-block-content" id="create" name="create"
+<form class="admin-notes-add" id="create" name="create"
       method="POST" action="{{ route('admin.note.create') }}">
     {{ csrf_field() }}
 
-    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-        <label for="name" class="col-md-4 control-label">Title</label>
+    <div class="admin-notes-add__heading">Новая записка</div>
 
-        <div class="col-md-6">
-            <input id="title" type="text" class="form-control" name="title"
-                   value="{{ old('title') }}" autofocus>
+    <div class="admin-notes-add-field">
+        <label for="title" class="admin-notes-add-field__heading">Заголовок</label>
 
-            @if ($errors->has('title'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('title') }}</strong>
-                </span>
-            @endif
-        </div>
+        <input id="title"
+               type="text"
+               class="admin-notes-add-field__input
+                      {{ $errors->has('title') ? 'admin-notes-add-field__input_error' : '' }}"
+               name="title"
+               value="{{ old('title') }}"
+               autofocus>
+
+        <button type="submit" class="admin-notes-add-field__submit">
+            Создать
+        </button>
     </div>
 
-    <button type="submit">Создать записку</button>
+    @if ($errors->has('title'))
+        <div class="admin-notes-add__error">
+            {{ $errors->first('title') }}
+        </div>
+    @endif
 </form>
