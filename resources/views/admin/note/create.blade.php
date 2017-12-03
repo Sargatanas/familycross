@@ -4,18 +4,18 @@
 
     <div class="admin-notes-add__heading">Новая записка</div>
 
-    <div class="admin-notes-add-field">
-        <label for="title" class="admin-notes-add-field__heading">Заголовок</label>
+    <div class="admin-notes-add-note">
+        <label for="title" class="admin-notes-add-note__heading">Заголовок</label>
 
         <input id="title"
                type="text"
-               class="admin-notes-add-field__input
+               class="admin-notes-add-note__input
                       {{ $errors->has('title') ? 'admin-notes-add-field__input_error' : '' }}"
                name="title"
                value="{{ old('title') }}"
                autofocus>
 
-        <button type="submit" class="admin-notes-add-field__submit">
+        <button type="submit" class="admin-notes-add-buttons__element admin-notes-add-note__submit">
             Создать
         </button>
     </div>
