@@ -12,21 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('main');
+})
+    ->name('main')
+;
 
-/* Просмотр записки*/
+/**
+ * Просмотр записок
+ *
+ */
+Route::get('notes', 'NoteController@showAll')
+    ->name('notes.show')
+;
 Route::get('note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
 
-/* Создание записки*/
-//Route::get('note/create', 'DraftNoteController@createShow')
-//    ->name('note.create.show')
-//;
-//Route::post('note/create/add', 'DraftNoteController@create')
-//    ->name('note.create')
-//;
+
 
 /**
  * Работа непосредственно с записками

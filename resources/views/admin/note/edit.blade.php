@@ -53,7 +53,7 @@
                     <div class="admin-notes-add-block">
                         <label for="type"
                                class="admin-notes-add-block__heading">
-                            Выберите тип блока
+                            Выберите тип
                         </label>
 
                         <select id="type" class="admin-notes-add-block__select" name="type">

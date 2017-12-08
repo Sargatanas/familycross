@@ -1,6 +1,6 @@
-<div class="notes-block__element notes-block-literature">
-    <div class="notes-block-literature__heading">Список литературы</div>
-    <div class="notes-block-literature__content">
+<div class="note-block__element note-literature">
+    <div class="note-literature__heading">Список литературы</div>
+    <div class="note-literature__content">
         <ol>
             {!! $content !!}
         </ol>

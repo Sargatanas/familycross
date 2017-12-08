@@ -1,6 +1,6 @@
-<div class="notes-block__element notes-block-task">
+<div class="note-block__element note-task">
     @if (filled($heading))
-        <div class="notes-block-task__heading">{{ $heading }}</div>
+        <div class="note-task__heading">{{ $heading }}</div>
     @endif
-    <div class="notes-block-task__content text">{!! $content !!}</div>
+    <div class="note-task__content text">{!! $content !!}</div>
 </div>

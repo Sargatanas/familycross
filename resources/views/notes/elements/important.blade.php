@@ -1,8 +1,8 @@
-<div class="notes-block__element notes-block-important">
-    <div class="notes-block-important__icon notes-block-important_
-    @if(filled($heading))
-        {{ $heading }}
-    @endif
-                                                                    "></div>
+<div class="note-block__element
+            note-important
+            note-important_{{ filled($heading) ? $heading : '' }}">
+    <div class="note-important__icon
+                note-important__icon_{{ filled($heading) ? $heading : '' }}">
+    </div>
     {!! $content !!}
 </div>

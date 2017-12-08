@@ -1,27 +1,43 @@
+@add-color: #b9b3b7;
+
 .admin-notes-add {
   display: flex;
   flex-direction: column;
+
   height: 120px;
   margin: 10px;
-  border: 3px solid white;
+
+  border: 3px solid @add-color;
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
   &__heading {
     display: flex;
     align-items: center;
+
     height: 30px;
+
     padding-left: 10px;
-    background: white;
+
+    background: @add-color;
+
     font-size: 1.2em;
-    color: grey;
+    color: white;
   }
 
   &__error {
     position: relative;
     display: block;
+
     margin-left: 100px;
+
     color: red;
+  }
+
+  &__button {
+    width: 150px;
+
+    margin: 5px 5px 0 auto;
   }
 }
 
@@ -31,8 +47,11 @@
 
     &__error {
       top: -30px;
+
       width: 150px;
+
       margin-left: 20px;
+
       font-size: 0.9em;
     }
   }

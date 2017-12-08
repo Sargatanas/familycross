@@ -30,4 +30,15 @@ class NoteController extends Controller
     public function create() {
         return view('notes.note.create');
     }
+
+    /**
+     * Показать список всех опубликованных записок на площадке
+     *
+     * @return Response
+     */
+    public function showAll()
+    {
+        $notes = PublicNote::all();
+        return view('notes.all', compact('notes'));
+    }
 }

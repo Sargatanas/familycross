@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
  * app\Note
@@ -61,5 +62,17 @@ class Note extends Model
     public function getElementsAttribute()
     {
         return $this->hasMany('App\Block', 'note_id')->orderBy('order')->get();
+    }
+
+    /**
+     * Вывести дату в соответствии с таймзоной по Екатеринбургу
+     *
+     */
+    public function getCreatedAtAttribute($value)
+    {
+        $date_time = new Carbon($value, config('app.timezone'));
+        $date_time->timezone = 'Asia/Yekaterinburg';
+
+        return $date_time;
     }
 }

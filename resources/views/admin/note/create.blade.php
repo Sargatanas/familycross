@@ -15,9 +15,11 @@
                value="{{ old('title') }}"
                autofocus>
 
-        <button type="submit" class="admin-notes-add-buttons__element admin-notes-add-note__submit">
-            Создать
-        </button>
+        <div class="admin-notes-add__button">
+            <button type="submit" class="button ">
+                Создать
+            </button>
+        </div>
     </div>
 
     @if ($errors->has('title'))

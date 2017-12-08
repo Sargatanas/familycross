@@ -1,0 +1,33 @@
+@color: #b09fb9;
+
+.note-task {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  border: 2px solid @color;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  overflow: hidden;
+
+
+  &__heading {
+    display: block;
+
+    padding:  10px 5px 5px 15px;
+
+    background: @color;
+
+    color: white;
+  }
+
+
+  &__content {
+    display: block;
+
+    padding: 10px;
+  }
+}
