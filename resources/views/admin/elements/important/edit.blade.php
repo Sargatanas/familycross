@@ -32,6 +32,28 @@
     <div class="admin-notes-edit__content">
 
         <div class="admin-notes-edit-element">
+            <label for="heading" class="admin-notes-edit-element__heading">
+                Тип блока
+            </label>
+
+            <select id="heading"
+                    class="admin-notes-edit-element__input
+                           admin-notes-edit-element__input_selector"
+                    name="heading"
+                    required>
+                <option value="neutral" {{ $block->heading == 'neutral' ? 'selected' : ''}}>
+                    нейтральный
+                </option>
+                <option value="error" {{ $block->heading == 'error' ? 'selected' : ''}}>
+                    ошибки
+                </option>
+                <option value="interesting" {{ $block->heading == 'interesting' ? 'selected' : ''}}>
+                    интересный факт
+                </option>
+            </select>
+        </div>
+
+        <div class="admin-notes-edit-element">
             <label for="content" class="admin-notes-edit-element__heading">
                 Содержимое
             </label>

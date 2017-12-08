@@ -31,7 +31,6 @@
 
     <div class="admin-notes-edit__content">
 
-
         <div class="admin-notes-edit-element">
             <label for="heading" class="admin-notes-edit-element__heading">
                 Подзаголовок

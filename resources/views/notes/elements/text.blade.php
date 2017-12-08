@@ -1,8 +1,8 @@
-<div class="notes-block__element notes-block-text">
+<div class="note-block__element note-text">
     @if (filled($heading))
-        <div class="notes-block-text__heading">{{ $heading }}</div>
+        <div class="note-text__heading">{{ $heading }}</div>
     @endif
-    <div class="notes-block-text__content">
+    <div class="note-text__content">
         {!! $content !!}
     </div>
 </div>

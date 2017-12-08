@@ -1,6 +1,6 @@
-<div class="notes-block__element notes-block-picture">
-    <img src="{{ $content }}" class="image notes-block-picture__image">
+<div class="note-block__element note-picture">
+    <img src="{{ $content }}" class="image note-picture__content">
     @if (filled($heading))
-        <div class="notes-block-picture__caption">{{ $heading }}</div>
+        <div class="note-picture__heading">{{ $heading }}</div>
     @endif
 </div>
