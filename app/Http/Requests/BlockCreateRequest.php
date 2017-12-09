@@ -37,7 +37,7 @@ class BlockCreateRequest extends FormRequest
             'type' => [
                 'required',
                 Rule::in([Block::TYPE_TEXT, Block::TYPE_CODE, Block::TYPE_IMPORTANT,
-                          Block::TYPE_LITERATURE, Block::TYPE_TASK])
+                          Block::TYPE_LITERATURE, Block::TYPE_TASK, Block::TYPE_PICTURE])
             ]
         ];
     }

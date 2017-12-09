@@ -419,8 +419,7 @@
   margin-right: 10px;
   box-sizing: border-box;
   box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.2);
-  border: 2px solid #8c8c8c;
-  border-bottom-right-radius: 5px;
+  border-radius: 5px;
   background: #9a9a9a;
   font-size: 13px;
   font-family: Arial, sans-serif;
@@ -435,10 +434,10 @@
   width: 200px;
 }
 .admin-notes-add-buttons__element_color-green {
-  background: #577b4b;
+  background: #4d912b;
 }
 .admin-notes-add-buttons__element_color-red {
-  background: #a9594d;
+  background: #a93d2f;
 }
 .admin-notes-add-buttons__element_margin-0 {
   margin-right: 0;
@@ -453,6 +452,7 @@
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border: 3px solid #cbcbcb;
+  background: #f7f7f7;
 }
 .admin-notes-edit__content {
   display: flex;
@@ -515,13 +515,14 @@
   justify-content: flex-end;
   width: 100px;
   margin-right: 10px;
+  padding-top: 6px;
 }
 .admin-notes-edit-element__input {
   display: block;
   max-width: calc(100% - 110px);
   min-width: calc(100% - 110px);
-  height: 20px;
-  padding: 10px;
+  height: 30px;
+  padding: 0 10px;
   box-sizing: border-box;
   font-size: 0.9em;
 }
@@ -532,6 +533,13 @@
 .admin-notes-edit-element__input_selector {
   min-width: 200px;
   max-width: 200px;
+}
+.admin-notes-edit-element__input_file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30px;
+  padding: 0;
 }
 .admin-area-notes {
   display: flex;
@@ -687,6 +695,32 @@
   display: block;
   box-sizing: border-box;
   padding: 5px 10px 10px 30px;
+}
+.note-picture {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+.note-picture__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  color: grey;
+}
+.note-picture__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: auto;
+}
+.note-picture__content_edit {
+  margin-bottom: 10px;
 }
 .note-task {
   display: flex;

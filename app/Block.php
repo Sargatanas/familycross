@@ -39,6 +39,8 @@ class Block extends Model
 
     const TYPE_LITERATURE = 'literature';
 
+    const TYPE_PICTURE = 'picture';
+
     /**
      * The table associated with the model.
      *

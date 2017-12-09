@@ -9,7 +9,7 @@
             @include('notes.elements.'.$element->type,
                [
                    'heading' => $element->heading,
-                   'content' => $element->content
+                   'content' => $element->content,
                ]
             )
         @endforeach

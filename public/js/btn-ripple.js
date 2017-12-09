@@ -3,7 +3,7 @@
 let buttons = document.getElementsByClassName('button');
 
 Array.prototype.forEach.call(buttons, function(b) {
-    b.addEventListener('mousedown', createRipple)
+    b.addEventListener('click', createRipple)
 });
 
 function createRipple(e) {
