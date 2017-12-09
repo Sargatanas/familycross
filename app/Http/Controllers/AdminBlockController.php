@@ -11,6 +11,9 @@ use App\Note;
 use DB;
 use Illuminate\Http\Request;
 use Validator;
+use Illuminate\Http\UploadedFile;
+use Exception;
+use Storage;
 
 class AdminBlockController extends Controller
 {
@@ -117,8 +120,19 @@ class AdminBlockController extends Controller
             $block->order = $request->order;
         }
 
+        if(blank($request->file)) {
+            $block->content = $request->content;
+        } else {
+            if (Storage::disk('public')->exists($block->content)) {
+                Storage::disk('public')->delete($block->content);
+            }
+
+            $storage_path = Storage::disk('public')->put('', $request->file);
+            $block->content = basename($storage_path);
+        }
+
         $block->heading = $request->heading;
-        $block->content = $request->content;
+
         $block->save();
 
         return redirect(route('admin.note.show', ['id' => $note->id]));

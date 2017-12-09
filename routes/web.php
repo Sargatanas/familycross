@@ -75,6 +75,9 @@ Route::post('/admin/note/id{note_id}/block/type/important/id{id}', 'AdminBlockCo
 Route::post('/admin/note/id{note_id}/block/type/literature/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.literature.edit')
 ;
+Route::post('/admin/note/id{note_id}/block/type/picture/id{id}', 'AdminBlockController@codeEdit')
+    ->name('admin.block.picture.edit')
+;
 Route::post('/admin/note/id{note_id}/block/type/task/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.task.edit')
 ;

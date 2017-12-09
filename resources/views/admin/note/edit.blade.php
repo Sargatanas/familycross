@@ -41,6 +41,10 @@
                         @case(\App\Block::TYPE_CODE)
                             @include('admin.elements.code.edit', ['block' => $block])
                         @break
+
+                        @case(\App\Block::TYPE_PICTURE)
+                            @include('admin.elements.picture.edit', ['block' => $block])
+                        @break
                     @endswitch
                 @endforeach
 
@@ -72,6 +76,10 @@
                             <option value="{{ \App\Block::TYPE_CODE }}"
                                     {{ old('type') == \App\Block::TYPE_CODE ? 'selected' : '' }} >
                                 код
+                            </option>
+                            <option value="{{ \App\Block::TYPE_PICTURE }}"
+                                    {{ old('type') == \App\Block::TYPE_PICTURE ? 'selected' : '' }} >
+                                картинка
                             </option>
                             <option value="{{ \App\Block::TYPE_LITERATURE }}"
                                     {{ old('type') == \App\Block::TYPE_LITERATURE ? 'selected' : '' }} >
