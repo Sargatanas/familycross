@@ -74,7 +74,11 @@ class Block extends Model
      */
     public function setContentAttribute($value)
     {
-        $this->attributes['content'] = htmlspecialchars($value, ENT_HTML5);
+        if ($this->type != 'literature') {
+            $this->attributes['content'] = htmlspecialchars($value, ENT_HTML5);
+        } else {
+            $this->attributes['content'] = $value;
+        }
     }
 
     /**

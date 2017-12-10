@@ -14,9 +14,11 @@ use Carbon\Carbon;
  * @property string $title
  * @property string $description
  * @property string $description_plain
+ * @property string $tags_at_string
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Block[] $blocks
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
  *
  * @method static Builder|\App\Note whereId($value)
  * @method static Builder|\App\Note whereTitle($value)
@@ -111,4 +113,34 @@ class Note extends Model
     {
         return $this->attributes['description'];
     }
+
+    /**
+     * Найти все теги, привязанные к записке
+     *
+     * @return array
+     */
+    public function getTagsAttribute()
+    {
+        return $this->hasMany('App\Tag', 'note_id')->orderBy('tag_name')->get();
+    }
+
+    /**
+     * Найти все теги, привязанные к записке, в виде строки
+     *
+     * @return string
+    */
+    public function getTagsAtStringAttribute()
+    {
+        $tags = $this->hasMany('App\Tag', 'note_id')->orderBy('tag_name')->get();
+        $tag_list = '';
+
+        foreach ($tags as $tag)
+        {
+            $tag_list = $tag_list.'#'.$tag->tag_name.', ';
+        }
+        $tag_list = substr($tag_list, 0, strlen($tag_list)-2);
+
+        return $tag_list;
+    }
+
 }

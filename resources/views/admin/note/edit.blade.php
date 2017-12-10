@@ -51,6 +51,44 @@
                 </div>
             </form>
 
+            <form class="admin-notes-edit"
+                  id="create"
+                  name="create"
+                  method="POST"
+                  action="{{ route('admin.note.tags.edit', ['note_id' => $note->id]) }}">
+                {{ csrf_field() }}
+
+                <div class="admin-notes-edit-title admin-notes-edit-title_tags">
+                    Теги
+                </div>
+
+                <div class="admin-notes-edit__content">
+                    <div class="admin-notes-edit-element">
+                        Введите теги через запятую, предваряя каждый знаком #.
+                    </div>
+                    <div class="admin-notes-edit-element">
+                        <strong>Пример:&nbsp;&nbsp;</strong> #css, #html, #js
+                    </div>
+
+                    <div class="admin-notes-edit-element">
+                        <input id="tags"
+                               type="text"
+                               class="admin-notes-edit-element__input
+                                      admin-notes-edit-element__input_tags"
+                               name="tags"
+                               value="{{ $note->tags_at_string }}"
+                               required>
+                    </div>
+
+                    <div class="admin-notes-edit-buttons">
+                        <input class="admin-notes-add-buttons__element
+                          admin-notes-add-buttons__element_margin-0"
+                               type="submit"
+                               value="Сохранить">
+                    </div>
+                </div>
+            </form>
+
             <div class="admin-area-notes__content">
                 @include('admin.elements.error', ['errors' => $errors])
 

@@ -55,9 +55,13 @@ Route::get('/admin/note/id{id}/delete', 'AdminNoteController@delete')
 Route::get('/admin/note/id{id}', 'AdminNoteController@editShow')
     ->name('admin.note.show')
 ;
-//редактирование заголовка записи
+// редактирование информации о записи (название, описание)
 Route::post('/admin/note/id{note_id}/edit', 'AdminNoteController@infoEdit')
     ->name('admin.note.info.edit')
+;
+// редактирование тегов
+Route::post('/admin/note/id{note_id}/tags/edit', 'TagController@createTags')
+    ->name('admin.note.tags.edit')
 ;
 
 // создание нового блока

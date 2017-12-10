@@ -126,7 +126,8 @@ class AdminNoteController extends Controller
      * @param NoteInfoEditRequest $request
      * @return \Redirect
     */
-    public function infoEdit(NoteInfoEditRequest $request, int $note_id) {
+    public function infoEdit(NoteInfoEditRequest $request, int $note_id)
+    {
         $note = Note::find($note_id);
 
         $note->title = $request->title;
