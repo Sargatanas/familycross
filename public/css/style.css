@@ -530,6 +530,11 @@
   min-height: 100px;
   font-size: 1.1em;
 }
+.admin-notes-edit-element__input_code {
+  font-family: monospace, monospace;
+  font-size: 15px;
+  word-break: break-all;
+}
 .admin-notes-edit-element__input_selector {
   min-width: 200px;
   max-width: 200px;
@@ -619,20 +624,19 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  border-left: 5px solid #ababab;
+  border-left: 5px solid rgba(12, 23, 80, 0.5);
   background: #ffffff;
-  font-family: Courier, monospace;
-  font-size: 14px;
 }
 .note-code__heading {
   display: block;
   padding: 10px 5px 5px 15px;
-  background: #ababab;
-  font-size: 0.9em;
+  background: rgba(12, 23, 80, 0.5);
   color: white;
 }
 .note-code__content {
   padding: 10px 10px 10px 25px;
+  font-family: monospace, monospace;
+  word-break: break-all;
 }
 .note-important {
   display: block;
@@ -687,14 +691,14 @@
 }
 .note-literature__heading {
   display: block;
-  margin: 10px auto 5px;
+  margin: 10px auto 0;
   padding-top: 5px;
   font-weight: bold;
 }
 .note-literature__content {
   display: block;
   box-sizing: border-box;
-  padding: 5px 10px 10px 30px;
+  padding: 0 10px 10px 30px;
 }
 .note-picture {
   display: flex;
@@ -727,7 +731,7 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  border: 2px solid #b09fb9;
+  border: 2px solid rgba(12, 23, 80, 0.5);
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   overflow: hidden;
@@ -735,7 +739,7 @@
 .note-task__heading {
   display: block;
   padding: 10px 5px 5px 15px;
-  background: #b09fb9;
+  background: rgba(12, 23, 80, 0.5);
   color: white;
 }
 .note-task__content {

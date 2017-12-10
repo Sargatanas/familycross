@@ -50,9 +50,10 @@
 
             <textarea id="content"
                       class="admin-notes-edit-element__input
-                             admin-notes-edit-element__input_textarea"
+                             admin-notes-edit-element__input_textarea
+                             admin-notes-edit-element__input_code"
                       name="content"
-                      required>{{ old('content', $block->content) }}</textarea>
+                      required>{{ old('content', $block->content_plain) }}</textarea>
         </div>
 
         <div class="admin-notes-edit-buttons">
