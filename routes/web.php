@@ -55,6 +55,10 @@ Route::get('/admin/note/id{id}/delete', 'AdminNoteController@delete')
 Route::get('/admin/note/id{id}', 'AdminNoteController@editShow')
     ->name('admin.note.show')
 ;
+//редактирование заголовка записи
+Route::post('/admin/note/id{note_id}/edit', 'AdminNoteController@infoEdit')
+    ->name('admin.note.info.edit')
+;
 
 // создание нового блока
 Route::post('/admin/note/id{id}/block', 'AdminBlockController@create')
@@ -64,7 +68,6 @@ Route::post('/admin/note/id{id}/block', 'AdminBlockController@create')
 Route::get('/admin/note/id{note_id}/block/id{id}', 'AdminBlockController@delete')
     ->name('admin.block.delete')
 ;
-
 // редактирование блока кода. Возможно в дальнейшем будем разница, но пока они все редактируются одинаково
 Route::post('/admin/note/id{note_id}/block/type/code/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.code.edit')

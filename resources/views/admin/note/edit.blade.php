@@ -12,10 +12,44 @@
         <main class="admin-area-notes">
             <div class="admin-area-notes__heading">Редактирование записки</div>
 
-            <div class="admin-area-notes-title">
-                <div class="admin-area-notes-title__heading">Заголовок:</div>
-                <div class="admin-area-notes-title__content">{{ $note->title }}</div>
-            </div>
+            <form class="admin-notes-edit"
+                  id="create"
+                  name="create"
+                  method="POST"
+                  action="{{ route('admin.note.info.edit', ['note_id' => $note->id]) }}">
+                {{ csrf_field() }}
+
+                <div class="admin-notes-edit__content">
+                    <div class="admin-notes-edit-element">
+                        <label for="title" class="admin-notes-edit-element__heading">
+                            Название
+                        </label>
+                        <input id="title"
+                               type="text"
+                               class="admin-notes-edit-element__input"
+                               name="title"
+                               value="{{ $note->title }}">
+                    </div>
+
+                    <div class="admin-notes-edit-element">
+                        <label for="description" class="admin-notes-edit-element__heading">
+                            Описание
+                        </label>
+
+                        <textarea id="description"
+                                  class="admin-notes-edit-element__input
+                                         admin-notes-edit-element__input_textarea"
+                                  name="description">{{ $note->description_plain }}</textarea>
+                    </div>
+
+                    <div class="admin-notes-edit-buttons">
+                        <input class="admin-notes-add-buttons__element
+                          admin-notes-add-buttons__element_margin-0"
+                               type="submit"
+                               value="Сохранить">
+                    </div>
+                </div>
+            </form>
 
             <div class="admin-area-notes__content">
                 @include('admin.elements.error', ['errors' => $errors])
