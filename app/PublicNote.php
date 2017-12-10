@@ -22,4 +22,14 @@ class PublicNote extends Model
     {
         return $this->belongsTo('App\Note', 'note_id');
     }
+
+    /**
+     * Найти все теги, привязанные к записке
+     *
+     * @return array
+     */
+    public function getTagsAttribute()
+    {
+        return Tag::where(['note_id' => $this->note_id])->get();
+    }
 }

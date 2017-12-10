@@ -22,18 +22,25 @@
                                 {{ $note->created_at->format('d.m.Y H:i') }}
                             </div>
                         </div>
-                        <div class="note-block__description">
-                            Тут будет немного текста о содержании записки.Тут будет немного текста о содержании записки.
-                            Тут будет немного текста о содержании записки.Тут будет немного текста о содержании записки.
-                            Тут будет немного текста о содержании записки.Тут будет немного текста о содержании записки.
-                            Тут будет немного текста о содержании записки.Тут будет немного текста о содержании записки.
-                        </div>
-                        <div class="note-block__href">
-                            <a class="button"
-                               href="{{ route('note.show', ['id' => $note->note_id]) }}"
-                               title="Перейти к записке">
-                                Читать
-                            </a>
+
+                        <div class="note-block__content">
+                            <div class="note-block__description">
+                                {!! $note->description !!}
+                            </div>
+
+                            <div class="note-block-tags">
+                                @foreach ($note->tags as $tag)
+                                    <div class="note-block-tags__element">{{ $tag->tag_name }}</div>
+                                @endforeach
+                            </div>
+
+                            <div class="note-block__href">
+                                <a class="button"
+                                   href="{{ route('note.show', ['id' => $note->note_id]) }}"
+                                   title="Перейти к записке">
+                                    Читать
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

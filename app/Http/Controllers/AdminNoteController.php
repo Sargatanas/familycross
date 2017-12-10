@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Middleware\IsNoteExist;
 use App\Http\Middleware\IsPublicNoteExist;
 use App\Http\Requests\NoteCreateRequest;
+use App\Http\Requests\NoteInfoEditRequest;
 use App\Note;
 use App\PublicNote;
 use Illuminate\Http\Request;
@@ -97,13 +98,14 @@ class AdminNoteController extends Controller
         //компилируем записку
         $public_note->content = view('notes.compile', ['note' => $note])->render();
         $public_note->title = $note->title;
+        $public_note->description = $note->description;
         $public_note->save();
 
         return redirect(route('admin.note.show', ['id' => $id]));
     }
 
     /**
-     * Удалить опубликованную записаку
+     * Удалить опубликованную записку
      *
      * @param int $id Идентификатор записки
      * @return \Redirect
@@ -117,4 +119,22 @@ class AdminNoteController extends Controller
         return redirect(route('admin.note.show', ['id' => $id]));
     }
 
+    /**
+     * Изменить заголовок записки
+     *
+     * @param int $note_id Идентификатор записки
+     * @param NoteInfoEditRequest $request
+     * @return \Redirect
+    */
+    public function infoEdit(NoteInfoEditRequest $request, int $note_id)
+    {
+        $note = Note::find($note_id);
+
+        $note->title = $request->title;
+        $note->description = $request->description;
+
+        $note->save();
+
+        return redirect(route('admin.note.show', ['id' => $note_id]));
+    }
 }

@@ -12,12 +12,17 @@ use Carbon\Carbon;
  * @mixin \Eloquent
  * @property string $id
  * @property string $title
+ * @property string $description
+ * @property string $description_plain
+ * @property string $tags_at_string
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Block[] $blocks
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Tag[] $tags
  *
  * @method static Builder|\App\Note whereId($value)
  * @method static Builder|\App\Note whereTitle($value)
+ * @method static Builder|\App\Note whereDescription$value)
  * @method static \Illuminate\Database\Query\Builder|\App\Note onlyTrashed()
  * @method static bool|null restore()
 */
@@ -36,7 +41,7 @@ class Note extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'title', 'description',
     ];
 
     /**
@@ -75,4 +80,67 @@ class Note extends Model
 
         return $date_time;
     }
+
+    /**
+     * Экранировать описание записки от опасных символов
+     *
+     * @param string $value
+    */
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = htmlspecialchars($value, ENT_HTML5);
+    }
+
+    /**
+     * Вывести описание записи, заменяя переводы строки на <br>
+     *
+     * @param string $value
+     * @return string
+     */
+    public function getDescriptionAttribute($value)
+    {
+        $pattern = '/(\r\n)/i';
+        $replacement = '<br>';
+        return preg_replace($pattern, $replacement, $value);
+    }
+
+    /**
+     * Вывести описание записи как есть в бд
+     *
+     * @return string
+     */
+    public function getDescriptionPlainAttribute()
+    {
+        return $this->attributes['description'];
+    }
+
+    /**
+     * Найти все теги, привязанные к записке
+     *
+     * @return array
+     */
+    public function getTagsAttribute()
+    {
+        return $this->hasMany('App\Tag', 'note_id')->orderBy('tag_name')->get();
+    }
+
+    /**
+     * Найти все теги, привязанные к записке, в виде строки
+     *
+     * @return string
+    */
+    public function getTagsAtStringAttribute()
+    {
+        $tags = $this->hasMany('App\Tag', 'note_id')->orderBy('tag_name')->get();
+        $tag_list = '';
+
+        foreach ($tags as $tag)
+        {
+            $tag_list = $tag_list.'#'.$tag->tag_name.', ';
+        }
+        $tag_list = substr($tag_list, 0, strlen($tag_list)-2);
+
+        return $tag_list;
+    }
+
 }

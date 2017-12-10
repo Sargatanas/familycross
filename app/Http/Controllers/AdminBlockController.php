@@ -120,6 +120,7 @@ class AdminBlockController extends Controller
             $block->order = $request->order;
         }
 
+        //проверка типа получаемого контента
         if(blank($request->file)) {
             $block->content = $request->content;
         } else {
