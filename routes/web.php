@@ -24,17 +24,21 @@ Route::get('/', function () {
 Route::get('notes', 'NoteController@showAll')
     ->name('notes.show')
 ;
+// сортировка записей по одному тегу
+Route::post('notes/sort-by-one', 'NoteController@sortByOne')
+    ->name('notes.sort-by-one')
+;
+// вывод конкретной записи
 Route::get('note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
-
 
 
 /**
  * Работа непосредственно с записками
  *
  */
-// список записок
+// список записей
 Route::get('/admin/notes', 'AdminNoteController@showAll')
     ->name('admin.notes.show')
 ;

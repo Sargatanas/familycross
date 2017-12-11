@@ -12,6 +12,24 @@
         <div class="notes__heading">
             Список записей
         </div>
+        @if (!blank($sort))
+            <div class="notes-sort">
+                <div class="notes-sort__heading">
+                    Сортировка по
+                </div>
+                <div class="notes-sort-content">
+                    @foreach ($sort as $sort_tag)
+                        <div class="notes-sort-tag">
+                            <div class="notes-sort-tag__text">
+                                {{ $sort_tag }}
+                            </div>
+                            <a class="notes-sort-tag__delete"
+                               href="{{ route('notes.show', ['sort' => $sort, 'tag_delete' => $sort_tag]) }}"></a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        @endif
         <div class="notes__content">
             @if(filled($notes))
                 @foreach ($notes as $note)
@@ -30,7 +48,10 @@
 
                             <div class="note-block-tags">
                                 @foreach ($note->tags as $tag)
-                                    <div class="note-block-tags__element">{{ $tag->tag_name }}</div>
+                                    <a class="note-block-tags__element"
+                                       href="{{ route('notes.show', ['sort' => [$tag->tag_name]]) }}">
+                                        {{ $tag->tag_name }}
+                                    </a>
                                 @endforeach
                             </div>
 

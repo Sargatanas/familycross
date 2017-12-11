@@ -1,6 +1,7 @@
 "use strict";
 
 let buttons = document.getElementsByClassName('button');
+let url;
 
 Array.prototype.forEach.call(buttons, function(b) {
     b.addEventListener('click', createRipple)
@@ -18,9 +19,21 @@ function createRipple(e) {
         circle.style.left = e.clientX - this.offsetLeft - d / 2 + 'px';
         circle.style.top = e.clientY - this.offsetTop - d / 2 + 'px';
 
+        url = this.href;
+        window.setTimeout(function () {
+            window.location.href = url;
+        }, 300);
+        this.href = 'javascript:void(0)';
+
         let date = new Date();
         date = String(date.getTime());
         circle.setAttribute('id', date);
+        let id = String(date) + 'id';
+        this.id = id;
+
+        setTimeout(function () {
+            document.getElementById(id).setAttribute('href', url);
+        }, 299);
 
         setTimeout(function () {
             let element = document.getElementById(date);
@@ -30,16 +43,3 @@ function createRipple(e) {
         circle.classList.add('ripple');
     }
 }
-
-function afterRipple() {
-    if(!this.classList.contains('button_default')) {
-        let url = this.href;
-        setTimeout(function () {
-            window.location.href = url;
-        }, 300);
-        this.href='javascript:void(0)';
-    }
-}
-Array.prototype.forEach.call(buttons, function(b) {
-    b.addEventListener('click', afterRipple)
-});
