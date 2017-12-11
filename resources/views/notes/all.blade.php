@@ -12,24 +12,41 @@
         <div class="notes__heading">
             Список записей
         </div>
-        @if (!blank($sort))
             <div class="notes-sort">
-                <div class="notes-sort__heading">
-                    Сортировка по
-                </div>
-                <div class="notes-sort-content">
-                    @foreach ($sort as $sort_tag)
-                        <div class="notes-sort-tag">
-                            <div class="notes-sort-tag__text">
-                                {{ $sort_tag }}
+                @if (!blank($sort))
+                    <div class="notes-sort__heading">
+                        Сортировка по
+                    </div>
+                    <div class="notes-sort__selected">
+                        @foreach ($sort as $sort_tag)
+                            <div class="notes-sort-tag">
+                                <div class="notes-sort-tag__text">
+                                    {{ $sort_tag }}
+                                </div>
+                                <a class="notes-sort-tag__delete"
+                                   href="{{ route('notes.show', ['sort' => $sort, 'delete' => $sort_tag]) }}"></a>
                             </div>
-                            <a class="notes-sort-tag__delete"
-                               href="{{ route('notes.show', ['sort' => $sort, 'tag_delete' => $sort_tag]) }}"></a>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+                @endif
+                <div class="notes-sort-select">
+                    <div class="notes-sort-select__heading">
+                        @if (blank($sort))
+                            Выбрать тег
+                        @else
+                            Добавить тег
+                        @endif
+                    </div>
+                    <div class="notes-sort-select__content">
+                        @foreach($tags as $tag)
+                            <a class="notes-sort-select__tag"
+                               href="{{ route('notes.show', ['sort' => $sort, 'add' => $tag]) }}">
+                                {{ $tag }}
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
             </div>
-        @endif
         <div class="notes__content">
             @if(filled($notes))
                 @foreach ($notes as $note)
@@ -48,7 +65,10 @@
 
                             <div class="note-block-tags">
                                 @foreach ($note->tags as $tag)
-                                    <a class="note-block-tags__element"
+                                    <a class="note-block-tags__element
+                                              @if (in_array($tag->tag_name, $sort))
+                                                  note-block-tags__element_selected
+                                              @endif"
                                        href="{{ route('notes.show', ['sort' => [$tag->tag_name]]) }}">
                                         {{ $tag->tag_name }}
                                     </a>
@@ -66,7 +86,7 @@
                     </div>
                 @endforeach
             @else
-                <div class="">- Здесь пока нет ни одной записи-</div>
+                <div>- Здесь пока нет ни одной записи-</div>
             @endif
         </div>
     </main>

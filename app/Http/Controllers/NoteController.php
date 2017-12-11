@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PublicNote;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -40,15 +41,19 @@ class NoteController extends Controller
     public function showAll(Request $request)
     {
         $notes = PublicNote::orderBy('created_at')->get();
+        $tags = Tag::orderBy('tag_name')->get();
 
         $sorted_notes = $notes;
         $sort_temp = array();
+        if(!blank($request->add)) {
+            $sort_temp[] = $request->add;
+        }
 
         if (!blank($request->sort)) {
 
             foreach($request->sort as $sort_element)
             {
-                if ($sort_element !== $request->tag_delete) {
+                if ($sort_element !== $request->delete) {
                     $sort_temp[] = $sort_element;
                 }
             }
@@ -60,7 +65,7 @@ class NoteController extends Controller
                     $tags = array();
                     foreach($note->tags as $tag)
                     {
-                        array_push($tags, $tag->tag_name);
+                        $tags[] = $tag->tag_name;
                     }
 
                     if (blank(array_diff($sort_temp, $tags))) {
@@ -69,7 +74,20 @@ class NoteController extends Controller
                 }
             }
         }
+        asort($sort_temp);
 
-        return view('notes.all', ['notes' => $sorted_notes, 'sort' => $sort_temp]);
+        // получим теги всех опубликованных записок
+        $tag_list = array();
+        foreach ($notes as $note)
+        {
+            foreach($note->tags as $tag)
+            {
+                if(!in_array($tag->tag_name, $tag_list)) {
+                    $tag_list[] = $tag->tag_name;
+                }
+            }
+        }
+
+        return view('notes.all', ['notes' => $sorted_notes, 'sort' => $sort_temp, 'tags' => $tag_list]);
     }
 }

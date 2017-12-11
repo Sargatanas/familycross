@@ -853,6 +853,9 @@
   cursor: pointer;
   user-select: none;
 }
+.note-block-tags__element_selected {
+  background: #ad8581;
+}
 .note-block__href {
   width: 100px;
   margin: 10px 0 0 auto;
@@ -860,6 +863,7 @@
 .notes-sort {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
   padding: 10px;
@@ -870,11 +874,45 @@
   justify-content: center;
   padding: 9px 10px 0;
 }
-.notes-sort-content {
+.notes-sort__selected {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 80%;
+}
+.notes-sort-select {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+}
+.notes-sort-select__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  padding: 0 10px;
+}
+.notes-sort-select__content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 85%;
+}
+.notes-sort-select__tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  box-sizing: border-box;
+  margin: 5px 10px 0 0;
+  padding: 0 10px;
+  border-radius: 5px;
+  background: #bebebe;
+  color: black;
+  text-decoration: none;
 }
 .notes-sort-tag {
   display: flex;
@@ -888,12 +926,13 @@
   background: #a9a9a9;
 }
 .notes-sort-tag__text {
-  margin-right: 5px;
+  margin: 0 10px 0 5px;
 }
 .notes-sort-tag__delete {
   display: block;
   width: 20px;
   height: 20px;
+  margin-left: auto;
   border-radius: 50%;
   background-color: grey;
   background-image: url("/img/icon-delete.png");
