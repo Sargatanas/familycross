@@ -6,7 +6,7 @@
     <div class="notes__heading">{{ $note->title }}</div>
     <div class="notes__content">
         @foreach ($note->elements as $element)
-            @include('notes.elements.'.$element->type,
+            @include('notes.note.elements.'.$element->type,
                [
                    'heading' => $element->heading,
                    'content' => $element->content,

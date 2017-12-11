@@ -7,6 +7,8 @@
   min-height: 100px;
   box-sizing: border-box;
 
+  margin-bottom: 20px;
+
   border-top-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
@@ -45,6 +47,9 @@
   &__content {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    box-sizing: border-box;
 
     padding: 0 20px 20px;
   }
@@ -91,17 +96,29 @@
       justify-content: center;
       align-items: center;
 
-      width: auto;
-      height: 10px;
+      height: 25px;
 
-      margin: 10px 10px 0;
-      padding: 5px 20px;
+      margin: 10px 5px 0;
+      padding: 0 20px;
+      box-sizing: border-box;
 
+      border: none;
       border-radius: 5px;
+      outline: none;
 
       background: grey;
 
+      font-family: Arial, sans-serif;
+      font-size: 1.03em;
       color: white;
+      text-decoration: none;
+
+      cursor: pointer;
+      user-select: none;
+
+      &_selected {
+        background: #ad8581;
+      }
     }
   }
 

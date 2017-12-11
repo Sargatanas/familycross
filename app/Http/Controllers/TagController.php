@@ -42,7 +42,7 @@ class TagController extends Controller
                 $temp_tag = $tag_list;
                 $tag_list = '';
             }
-            $temp_tag = substr($temp_tag, 1);
+            $temp_tag = mb_strtolower(substr($temp_tag, 1));
 
             $tag = new Tag([
                 'note_id' => $note_id,
