@@ -3,7 +3,7 @@
     date_default_timezone_set('Asia/Yekaterinburg');
 @endphp
 
-@extends('notes.layouts.base')
+@extends('layouts.base-header')
 
 @section('title', 'Записки на площадке')
 

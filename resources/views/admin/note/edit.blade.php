@@ -3,7 +3,7 @@
     /** @var \Illuminate\Support\ViewErrorBag $errors */
 @endphp
 
-@extends('notes.layouts.base')
+@extends('layouts.base-header')
 
 @section('title', 'Редактирование записки')
 

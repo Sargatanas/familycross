@@ -2,7 +2,7 @@
     /** @var \App\PublicNote $public_note */
 @endphp
 
-@extends('notes.layouts.base')
+@extends('layouts.base-header')
 
 @section('title', $public_note->title)
 

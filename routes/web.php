@@ -104,3 +104,19 @@ Route::get('/admin/note/id{note_id}/public', 'AdminNoteController@createPublic')
 Route::get('/admin/note/id{note_id}/public/delete', 'AdminNoteController@deletePublic')
     ->name('admin.note.public.delete')
 ;
+
+// блокируем регистрацию
+//Auth::routes();
+
+
+// авторизация пользователя
+Route::get('/login', 'UserController@index')
+    ->name('login')
+;
+Route::post('/login/exist', 'UserController@isUserExist')
+    ->name('login.exist')
+;
+
+Route::get('/home', 'HomeController@index')
+    ->name('home')
+;

@@ -2,7 +2,7 @@
     /** @var \App\Note[] $notes */
 @endphp
 
-@extends('notes.layouts.base')
+@extends('layouts.base-header')
 
 @section('title', 'Записки на площадке')
 

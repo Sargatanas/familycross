@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\PublicNote;
-use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -41,7 +40,6 @@ class NoteController extends Controller
     public function showAll(Request $request)
     {
         $notes = PublicNote::orderBy('created_at')->get();
-        $tags = Tag::orderBy('tag_name')->get();
 
         $sorted_notes = $notes;
         $sort_temp = array();
