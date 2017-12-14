@@ -14,7 +14,7 @@
 </head>
 <body class="body">
 
-@include('layouts.header')
+@include('layouts.elements.header')
 
 @yield('content')
 

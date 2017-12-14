@@ -26,7 +26,6 @@
                    name="user"
                    value="{{ old("user") }}"
                    required
-                   oninvalid="this.setCustomValidity('Пожалуйста, заполните это поле')"
                    autocomplete="off">
         </div>
 
@@ -40,8 +39,7 @@
                    id="password"
                    name="password"
                    value="{{ old("password") }}"
-                   required
-                   oninvalid="this.setCustomValidity('Пожалуйста, заполните это поле')">
+                   required>
         </div>
 
         @if (session('exist'))
@@ -56,6 +54,11 @@
                    value="Войти">
         </div>
     </form>
+
+    <a class="login__back"
+       href="{{ route('main')}}">
+        На главную
+    </a>
 </div>
 
 @endsection

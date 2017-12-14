@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\IsBlockExist;
 use App\Http\Middleware\IsNoteExist;
 use App\Http\Requests\BlockCodeEditRequest;
@@ -24,6 +25,8 @@ class AdminBlockController extends Controller
      */
     public function __construct()
     {
+        $this->middleware(CheckAuth::class);
+
         $this->middleware(IsNoteExist::class);
 
         $this->middleware(IsBlockExist::class)->except(['create']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Http\Requests\UserRequest;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -21,7 +22,7 @@ class UserController extends Controller
      * Проверка существования пользователя с указанными данными
      *
      * @param UserRequest $request
-     * @return \Redirect
+     * @return mixed
     */
     public function isUserExist(UserRequest $request) {
         $email = $request->user;
@@ -33,6 +34,7 @@ class UserController extends Controller
        }
 
         if ($exist !== 'default') {
+//            return Redirect::back();
             return redirect(route('main'));
         } else {
             return redirect(route('login'))->with(['exist' => $exist]);

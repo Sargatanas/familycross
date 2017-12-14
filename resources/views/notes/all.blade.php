@@ -5,7 +5,7 @@
 
 @extends('layouts.base-header')
 
-@section('title', 'Записки на площадке')
+@section('title', 'Записи на площадке')
 
 @section('content')
     <main class="area notes">

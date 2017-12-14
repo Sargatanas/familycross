@@ -150,7 +150,7 @@
 }
 .header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -162,6 +162,7 @@
   justify-content: center;
   align-items: center;
   width: 850px;
+  margin-left: 130px;
 }
 .header-nav-content {
   display: flex;
@@ -186,9 +187,17 @@
   height: 300px;
   margin-top: 80px;
   border-radius: 50%;
-  background: #4d485c url("/img/logo.svg") no-repeat 50% 50%;
+  background-color: #4d485c;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image: url("/img/logo.svg");
   background-size: 70% auto;
   color: grey;
+}
+.logo_admin {
+  width: 250px;
+  height: 250px;
+  background-image: url('/img/logo-gears.png');
 }
 .to-author {
   display: block;
@@ -215,6 +224,26 @@
     width: 10vw;
     height: 10vw;
   }
+}
+.to-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-duration: 0.2s;
+}
+.to-login:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0);
+  transition-duration: 0.2s;
 }
 .admin-notes-block {
   display: flex;
@@ -639,16 +668,52 @@
 }
 .login {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  height: 100vh;
   background: rgba(58, 58, 58, 0.7);
+}
+.login__back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 130px;
+  height: 35px;
+  box-sizing: border-box;
+  margin-top: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-duration: 0.2s;
+}
+.login__back:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0);
+  color: #ffffff;
+  transition-duration: 0.2s;
 }
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.main__to-login {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+.main__to-login:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0);
 }
 .main-area {
   display: flex;
@@ -656,7 +721,7 @@
   justify-content: flex-start;
   align-items: center;
   width: 400px;
-  min-height: 100%;
+  min-height: 100vh;
   background: rgba(190, 190, 190, 0.4);
 }
 .main-block-about {

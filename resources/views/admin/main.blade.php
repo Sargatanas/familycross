@@ -1,5 +1,5 @@
 @extends('layouts.base-main')
 
 @section('content')
-    @include('main.public')
+    @include('main.admin')
 @endsection

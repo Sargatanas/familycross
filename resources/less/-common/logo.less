@@ -10,8 +10,18 @@
 
   border-radius: 50%;
 
-  background: rgb(77, 72, 92) url("/img/logo.svg") no-repeat 50% 50%;
+  background-color: rgb(77, 72, 92);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-image:  url("/img/logo.svg");
   background-size: 70% auto;
 
   color: grey;
+
+  &_admin {
+    width: 250px;
+    height: 250px;
+
+    background-image: url('/img/logo-gears.png');
+  }
 }
