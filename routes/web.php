@@ -21,15 +21,15 @@ Route::get('/', function () {
  * Просмотр записок
  *
  */
-Route::get('/notes', 'NoteController@showAll')
+Route::get('notes', 'NoteController@showAll')
     ->name('notes.show')
 ;
 // сортировка записей по одному тегу
-Route::post('/notes/sort-by-one', 'NoteController@sortByOne')
+Route::post('notes/sort-by-one', 'NoteController@sortByOne')
     ->name('notes.sort-by-one')
 ;
 // вывод конкретной записи
-Route::get('/note/id{id}', 'NoteController@show')
+Route::get('note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
 
@@ -41,29 +41,29 @@ Route::get('/note/id{id}', 'NoteController@show')
 // блокируем регистрацию
 //Auth::routes();
 
-Route::get('/admin', 'AdminController@index')
+Route::get('admin', 'AdminController@index')
     ->name('admin')
 ;
-Route::get('/logout', 'AdminController@logout')
+Route::get('logout', 'AdminController@logout')
     ->name('logout')
 ;
 
 // авторизация пользователя
-Route::get('/login', 'UserController@index')
+Route::get('login', 'UserController@index')
     ->name('login')
 ;
-Route::post('/login/exist', 'UserController@isUserExist')
+Route::post('login/exist', 'UserController@isUserExist')
     ->name('login.exist')
 ;
 
 // редактирование списка пользователей
-Route::get('/admin/users', 'AdminUsersController@editUsers')
+Route::get('admin/users', 'AdminUsersController@editUsers')
     ->name('admin.users.edit')
 ;
-Route::post('/admin/users/create', 'AdminUsersController@create')
+Route::post('admin/users/create', 'AdminUsersController@create')
     ->name('admin.users.create')
 ;
-Route::get('/admin/user_{id}/delete', 'AdminUsersController@delete')
+Route::get('admin/user_{id}/delete', 'AdminUsersController@delete')
     ->name('admin.user.delete')
 ;
 
@@ -75,15 +75,15 @@ Route::get('/admin/user_{id}/delete', 'AdminUsersController@delete')
  */
 
 // список записей
-Route::get('/admin/notes', 'AdminNoteController@showAll')
+Route::get('admin/notes', 'AdminNoteController@showAll')
     ->name('admin.notes.show')
 ;
 // создание новой записки
-Route::post('/admin/note/create', 'AdminNoteController@create')
+Route::post('admin/note/create', 'AdminNoteController@create')
     ->name('admin.note.create')
 ;
 // удаление записки
-Route::get('/admin/note/id{id}/delete', 'AdminNoteController@delete')
+Route::get('admin/note/id{id}/delete', 'AdminNoteController@delete')
     ->name('admin.note.delete')
 ;
 
@@ -92,51 +92,51 @@ Route::get('/admin/note/id{id}/delete', 'AdminNoteController@delete')
  *
  */
 // интерфейс редактирования записки
-Route::get('/admin/note/id{id}', 'AdminNoteController@editShow')
+Route::get('admin/note/id{id}', 'AdminNoteController@editShow')
     ->name('admin.note.show')
 ;
 // редактирование информации о записи (название, описание)
-Route::post('/admin/note/id{note_id}/edit', 'AdminNoteController@infoEdit')
+Route::post('admin/note/id{note_id}/edit', 'AdminNoteController@infoEdit')
     ->name('admin.note.info.edit')
 ;
 // редактирование тегов
-Route::post('/admin/note/id{note_id}/tags/edit', 'TagController@createTags')
+Route::post('admin/note/id{note_id}/tags/edit', 'TagController@createTags')
     ->name('admin.note.tags.edit')
 ;
 
 // создание нового блока
-Route::post('/admin/note/id{id}/block', 'AdminBlockController@create')
+Route::post('admin/note/id{id}/block', 'AdminBlockController@create')
     ->name('admin.block.create')
 ;
 // удаление блока
-Route::get('/admin/note/id{note_id}/block/id{id}', 'AdminBlockController@delete')
+Route::get('admin/note/id{note_id}/block/id{id}', 'AdminBlockController@delete')
     ->name('admin.block.delete')
 ;
 // редактирование блока кода. Возможно в дальнейшем будем разница, но пока они все редактируются одинаково
-Route::post('/admin/note/id{note_id}/block/type/code/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/code/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.code.edit')
 ;
-Route::post('/admin/note/id{note_id}/block/type/important/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/important/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.important.edit')
 ;
-Route::post('/admin/note/id{note_id}/block/type/literature/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/literature/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.literature.edit')
 ;
-Route::post('/admin/note/id{note_id}/block/type/picture/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/picture/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.picture.edit')
 ;
-Route::post('/admin/note/id{note_id}/block/type/task/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/task/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.task.edit')
 ;
-Route::post('/admin/note/id{note_id}/block/type/text/id{id}', 'AdminBlockController@codeEdit')
+Route::post('admin/note/id{note_id}/block/type/text/id{id}', 'AdminBlockController@codeEdit')
     ->name('admin.block.text.edit')
 ;
 
 // опубликовать записку
-Route::get('/admin/note/id{note_id}/public', 'AdminNoteController@createPublic')
+Route::get('admin/note/id{note_id}/public', 'AdminNoteController@createPublic')
     ->name('admin.note.public')
 ;
 // удалить публикацию
-Route::get('/admin/note/id{note_id}/public/delete', 'AdminNoteController@deletePublic')
+Route::get('admin/note/id{note_id}/public/delete', 'AdminNoteController@deletePublic')
     ->name('admin.note.public.delete')
 ;
