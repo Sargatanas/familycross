@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\IsNoteExist;
 use App\Http\Middleware\IsPublicNoteExist;
 use App\Http\Requests\NoteCreateRequest;
@@ -21,6 +22,8 @@ class AdminNoteController extends Controller
      */
     public function __construct()
     {
+        $this->middleware(CheckAuth::class);
+
         $this->middleware(IsNoteExist::class)->except(['showAll', 'create']);
 
         $this->middleware(IsPublicNoteExist::class)->only(['deletePublic']);

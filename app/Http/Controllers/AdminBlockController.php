@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Block;
+use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\IsBlockExist;
 use App\Http\Middleware\IsNoteExist;
 use App\Http\Requests\BlockCodeEditRequest;
@@ -24,6 +25,8 @@ class AdminBlockController extends Controller
      */
     public function __construct()
     {
+        $this->middleware(CheckAuth::class);
+
         $this->middleware(IsNoteExist::class);
 
         $this->middleware(IsBlockExist::class)->except(['create']);
@@ -124,11 +127,11 @@ class AdminBlockController extends Controller
         if(blank($request->file)) {
             $block->content = $request->content;
         } else {
-            if (Storage::disk('public')->exists($block->content)) {
-                Storage::disk('public')->delete($block->content);
+            if (Storage::disk('s3')->exists($block->content)) {
+                Storage::disk('s3')->delete($block->content);
             }
 
-            $storage_path = Storage::disk('public')->put('', $request->file);
+            $storage_path = Storage::disk('s3')->put('', $request->file);
             $block->content = basename($storage_path);
         }
 

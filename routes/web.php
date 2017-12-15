@@ -21,23 +21,59 @@ Route::get('/', function () {
  * Просмотр записок
  *
  */
-Route::get('notes', 'NoteController@showAll')
+Route::get('/notes', 'NoteController@showAll')
     ->name('notes.show')
 ;
 // сортировка записей по одному тегу
-Route::post('notes/sort-by-one', 'NoteController@sortByOne')
+Route::post('/notes/sort-by-one', 'NoteController@sortByOne')
     ->name('notes.sort-by-one')
 ;
 // вывод конкретной записи
-Route::get('note/id{id}', 'NoteController@show')
+Route::get('/note/id{id}', 'NoteController@show')
     ->name('note.show')
 ;
+
+
+/**
+ * Администрирование
+ */
+
+// блокируем регистрацию
+//Auth::routes();
+
+Route::get('/admin', 'AdminController@index')
+    ->name('admin')
+;
+Route::get('/logout', 'AdminController@logout')
+    ->name('logout')
+;
+
+// авторизация пользователя
+Route::get('/login', 'UserController@index')
+    ->name('login')
+;
+Route::post('/login/exist', 'UserController@isUserExist')
+    ->name('login.exist')
+;
+
+// редактирование списка пользователей
+Route::get('/admin/users', 'AdminUsersController@editUsers')
+    ->name('admin.users.edit')
+;
+Route::post('/admin/users/create', 'AdminUsersController@create')
+    ->name('admin.users.create')
+;
+Route::get('/admin/user_{id}/delete', 'AdminUsersController@delete')
+    ->name('admin.user.delete')
+;
+
 
 
 /**
  * Работа непосредственно с записками
  *
  */
+
 // список записей
 Route::get('/admin/notes', 'AdminNoteController@showAll')
     ->name('admin.notes.show')

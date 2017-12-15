@@ -2,17 +2,17 @@
     /** @var \App\Note[] $notes */
 @endphp
 
-@extends('notes.layouts.base')
+@extends('layouts.base-header')
 
 @section('title', 'Записки на площадке')
 
 @section('content')
-    <div class="area admin-area">
-        <div class="admin-area-notes">
-            <div class="admin-area-notes__heading">
+    <div class="area">
+        <div class="admin-area">
+            <div class="admin-area__heading">
                 Администрирование записок
             </div>
-            <main class="admin-area-notes__content">
+            <main class="admin-area__content">
                 @if(filled($notes))
                     @foreach ($notes as $note)
                         <div class="admin-notes-block">
