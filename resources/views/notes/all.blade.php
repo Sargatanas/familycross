@@ -38,12 +38,18 @@
                         @endif
                     </div>
                     <div class="notes-sort-select__content">
-                        @foreach($tags as $tag)
-                            <a class="notes-sort-select__tag"
-                               href="{{ route('notes.show', ['sort' => $sort, 'add' => $tag]) }}">
-                                {{ $tag }}
-                            </a>
-                        @endforeach
+                        @if (!blank($tags))
+                            @foreach($tags as $tag)
+                                <a class="notes-sort-select__tag"
+                                   href="{{ route('notes.show', ['sort' => $sort, 'add' => $tag]) }}">
+                                    {{ $tag }}
+                                </a>
+                            @endforeach
+                        @else
+                            <div class="notes-sort-select__no-tags">
+                                -здесь нет пока ни одного тега-
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -63,17 +69,25 @@
                                 {!! $note->description !!}
                             </div>
 
-                            <div class="note-block-tags">
-                                @foreach ($note->tags as $tag)
-                                    <a class="note-block-tags__element
-                                              @if (in_array($tag->tag_name, $sort))
-                                                  note-block-tags__element_selected
-                                              @endif"
-                                       href="{{ route('notes.show', ['sort' => [$tag->tag_name]]) }}">
-                                        {{ $tag->tag_name }}
-                                    </a>
-                                @endforeach
-                            </div>
+                            @if (!blank($note->tags))
+                                <div class="note-block-tags">
+                                    @foreach ($note->tags as $tag)
+                                        <a class="note-block-tags__element
+                                                  @if (in_array($tag->tag_name, $sort))
+                                                      note-block-tags__element_selected
+                                                  @endif"
+                                           href="{{ route('notes.show', ['sort' => [$tag->tag_name]]) }}">
+                                            {{ $tag->tag_name }}
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="note-block-tags">
+                                    <div class="note-block-tags_no-tags">
+                                        -нет тегов-
+                                    </div>
+                                </div>
+                            @endif
 
                             <div class="note-block__href">
                                 <a class="button"

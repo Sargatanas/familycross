@@ -77,8 +77,7 @@
                                    class="admin-notes-edit-element__input
                                       admin-notes-edit-element__input_tags"
                                    name="tags"
-                                   value="{{ $note->tags_at_string }}"
-                                   required>
+                                   value="{{ $note->tags_at_string }}">
                         </div>
 
                         <div class="admin-notes-edit-buttons">
