@@ -17,7 +17,8 @@
 <main class="main-area">
     <a class="to-author to-author_vk"
        href="https://vk.com/family_cross"
-       title="Связаться с автором">
+       title="Связаться с автором"
+       target="_blank">
     </a>
     @if (!Auth::check())
         <a class="to-login main__to-login"

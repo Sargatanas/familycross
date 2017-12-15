@@ -153,7 +153,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   min-height: 45px;
   background: rgba(190, 190, 190, 0.6);
 }
@@ -990,6 +990,10 @@
   background: #d2d2d2;
   font-size: 0.9em;
 }
+.note-block-tags_no-tags {
+  margin-top: 5px;
+  color: #8e8e8e;
+}
 .note-block-tags__element {
   display: flex;
   justify-content: center;
@@ -1069,6 +1073,16 @@
   background: #bebebe;
   color: black;
   text-decoration: none;
+}
+.notes-sort-select__no-tags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  padding: 0 10px;
+  color: #8e8e8e;
 }
 .notes-sort-tag {
   display: flex;

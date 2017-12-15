@@ -33,7 +33,7 @@ class TagCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'tags' => 'required|max:5000',
+            'tags' => 'nullable|max:5000',
         ];
     }
 }
