@@ -18,7 +18,7 @@
         <div class="login-block__element login-block-username">
             <label for="user"
                    class="login-block__label">
-                Логин
+                E-mail
             </label>
             <input type="text"
                    class="login-block__input"

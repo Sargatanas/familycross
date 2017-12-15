@@ -46,7 +46,7 @@
 
         @if(filled($block->content))
             <div class="note-picture__content note-picture__content_edit">
-                <img src="{{ asset('storage/'.$block->content) }}" alt="O-o-ops">
+                <img src="{{ Storage::disk('s3')->url($block->content) }}" alt="O-o-ops">
             </div>
         @endif
 
@@ -58,8 +58,7 @@
             <input id="file"
                    type="file"
                    class="admin-notes-edit-element__input admin-notes-edit-element__input_file"
-                   name="file"
-                   required>
+                   name="file">
         </div>
 
         <div class="admin-notes-edit-buttons">

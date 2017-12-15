@@ -33,11 +33,11 @@ class AdminController extends Controller
     /**
      * Выход из системы
      *
-     * @return RedirectResponse
+     * @return \Redirect
      */
-    public function logout($route) {
+    public function logout() {
         Auth::logout();
-        return view($route);
+        return redirect(route('main'));
     }
 }
 

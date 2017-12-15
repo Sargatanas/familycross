@@ -127,11 +127,11 @@ class AdminBlockController extends Controller
         if(blank($request->file)) {
             $block->content = $request->content;
         } else {
-            if (Storage::disk('public')->exists($block->content)) {
-                Storage::disk('public')->delete($block->content);
+            if (Storage::disk('s3')->exists($block->content)) {
+                Storage::disk('s3')->delete($block->content);
             }
 
-            $storage_path = Storage::disk('public')->put('', $request->file);
+            $storage_path = Storage::disk('s3')->put('', $request->file);
             $block->content = basename($storage_path);
         }
 

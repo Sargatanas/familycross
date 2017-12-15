@@ -33,6 +33,18 @@
                         Редактировать записи
                         </a>
                     </li>
+                    @if (Auth::user()->is_admin)
+                        <li class="nav-item">
+                            <a class="nav-button
+                              @if (URL::current() == route('admin.users.edit'))
+                                    nav-button_default"
+                               @else
+                               header-nav__item" href="{{ route('admin.users.edit') }}"
+                            @endif>
+                            Пользователи
+                            </a>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </nav>

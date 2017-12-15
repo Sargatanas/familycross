@@ -17,7 +17,7 @@
             @if(Auth::user()->is_admin)
                 <li class="menu__item">
                     <a class="main-nav__item button"
-                       href="#">
+                       href="{{ route('admin.users.edit') }}">
                         Пользователи
                     </a>
                 </li>

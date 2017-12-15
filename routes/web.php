@@ -37,6 +37,10 @@ Route::get('/note/id{id}', 'NoteController@show')
 /**
  * Администрирование
  */
+
+// блокируем регистрацию
+//Auth::routes();
+
 Route::get('/admin', 'AdminController@index')
     ->name('admin')
 ;
@@ -44,11 +48,32 @@ Route::get('/logout', 'AdminController@logout')
     ->name('logout')
 ;
 
+// авторизация пользователя
+Route::get('/login', 'UserController@index')
+    ->name('login')
+;
+Route::post('/login/exist', 'UserController@isUserExist')
+    ->name('login.exist')
+;
+
+// редактирование списка пользователей
+Route::get('/admin/users', 'AdminUsersController@editUsers')
+    ->name('admin.users.edit')
+;
+Route::post('/admin/users/create', 'AdminUsersController@create')
+    ->name('admin.users.create')
+;
+Route::get('/admin/user_{id}/delete', 'AdminUsersController@delete')
+    ->name('admin.user.delete')
+;
+
+
 
 /**
  * Работа непосредственно с записками
  *
  */
+
 // список записей
 Route::get('/admin/notes', 'AdminNoteController@showAll')
     ->name('admin.notes.show')
@@ -114,20 +139,4 @@ Route::get('/admin/note/id{note_id}/public', 'AdminNoteController@createPublic')
 // удалить публикацию
 Route::get('/admin/note/id{note_id}/public/delete', 'AdminNoteController@deletePublic')
     ->name('admin.note.public.delete')
-;
-
-// блокируем регистрацию
-//Auth::routes();
-
-
-// авторизация пользователя
-Route::get('/login', 'UserController@index')
-    ->name('login')
-;
-Route::post('/login/exist', 'UserController@isUserExist')
-    ->name('login.exist')
-;
-
-Route::get('/home', 'HomeController@index')
-    ->name('home')
 ;

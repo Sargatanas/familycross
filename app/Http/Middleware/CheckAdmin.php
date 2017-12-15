@@ -12,7 +12,7 @@ use Illuminate\Http\Response;
  * Class CheckAuth
  * @package App\Http\Middleware
  */
-class CheckAuth
+class CheckAdmin
 {
     /**
      * Handle an incoming request.
@@ -23,8 +23,9 @@ class CheckAuth
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect(route('login'));
+        if (!Auth::user()->is_admin) {
+            return redirect(route('main'))
+                ->with('status', 'Данная страница доступна только администраторам');
         }
 
         return $next($request);

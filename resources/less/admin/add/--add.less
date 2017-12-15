@@ -1,10 +1,10 @@
 @add-color: #b9b3b7;
 
-.admin-notes-add {
+.admin-add {
   display: flex;
   flex-direction: column;
 
-  height: 120px;
+  min-height: 100px;
   margin: 10px;
 
   border: 3px solid @add-color;
@@ -25,19 +25,35 @@
     color: white;
   }
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px;
+  }
+
   &__error {
     position: relative;
     display: block;
 
-    margin-left: 100px;
+    margin: 10px 0 10px 150px;
 
-    color: red;
+    color: #9d0000;
+  }
+
+  &__success {
+    position: relative;
+    display: block;
+
+    margin: 10px 0 10px 150px;
+
+    color: #3a9500;
   }
 
   &__button {
     width: 150px;
 
-    margin: 5px 5px 0 auto;
+    margin: 15px 5px 0 auto;
   }
 }
 
@@ -60,3 +76,4 @@
 @import "block/--block.less";
 @import "note/--note.less";
 @import "buttons.less";
+@import "element.less";

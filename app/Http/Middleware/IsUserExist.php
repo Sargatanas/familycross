@@ -2,32 +2,32 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
-use Auth;
-use Illuminate\Http\Response;
 
 /**
- * Проверяем, авторизован ли пользователь
+ * Проверяем, существует ли пользователь
  *
- * Class CheckAuth
+ * Class IsNoteExist
  * @package App\Http\Middleware
  */
-class CheckAuth
+class IsUserExist
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @return \Redirect
+     * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
-            return redirect(route('login'));
+        $user_id = $request->user_id ?? $request->id;
+
+        if (blank(User::find($user_id))) {
+            return abort(404);
         }
 
         return $next($request);
     }
 }
-

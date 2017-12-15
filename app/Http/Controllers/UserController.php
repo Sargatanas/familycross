@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\CheckAuth;
+use App\User;
 use Auth;
 use App\Http\Requests\UserRequest;
 use Redirect;
+use Response;
 
 class UserController extends Controller
 {
@@ -34,7 +37,6 @@ class UserController extends Controller
        }
 
         if ($exist !== 'default') {
-//            return Redirect::back();
             return redirect(route('main'));
         } else {
             return redirect(route('login'))->with(['exist' => $exist]);
