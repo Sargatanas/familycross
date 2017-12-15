@@ -41,7 +41,12 @@
                         @if (!blank($tags))
                             @foreach($tags as $tag)
                                 <a class="notes-sort-select__tag"
-                                   href="{{ route('notes.show', ['sort' => $sort, 'add' => $tag]) }}">
+                                   @if (blank($sort))
+                                       href="{{ route('notes.show', ['sort' => [$tag]]) }}"
+                                   @else
+                                       href="{{ route('notes.show', ['sort' => $sort, 'add' => $tag]) }}"
+                                   @endif
+                                >
                                     {{ $tag }}
                                 </a>
                             @endforeach
