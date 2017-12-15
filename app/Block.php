@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Note[] $notes
  * @method static \Illuminate\Database\Query\Builder|\App\Block onlyTrashed()
  * @method static bool|null restore()
-*/
+ */
 class Block extends Model
 {
     // Возможные типы блоков
@@ -74,7 +74,7 @@ class Block extends Model
      */
     public function setContentAttribute($value)
     {
-        if ($this->type != 'literature') {
+        if (($this->type != 'literature') and ($this->type != 'text') and ($this->type != 'task')) {
             $this->attributes['content'] = htmlspecialchars($value, ENT_HTML5);
         } else {
             $this->attributes['content'] = $value;
